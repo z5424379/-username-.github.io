@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/badline.github.io/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/badline.github.io/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/badline.github.io/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/badline.github.io/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/badline/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/badline/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/badline/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/badline/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/badline.github.io/css/main.css">
+<link rel="stylesheet" href="/badline/css/main.css">
 
 
-<link rel="stylesheet" href="/badline.github.io/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/badline/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"z5424379.github.io","root":"/badline.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"z5424379.github.io","root":"/badline/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="今天是参加训练营的第一天，也是第一次写博客。之前刷题都是用 Python 刷的，感觉对数据结构理解很差，这次训练营打算 Python 写完之后再用 C 写一遍。27. 移除元素题目链接: 27.移除元素这道题考察的是对数组的理解，数组的元素不能直接删除，只能进行替换。由于之前刷过这道题，大概还记得是用快慢指针的方法来做的。Python 代码: 12345678910class Solution:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day1： 27. 移除元素，704. 二分查找">
-<meta property="og:url" content="https://z5424379.github.io/badline.github.io/2023/09/20/day1/index.html">
+<meta property="og:url" content="https://z5424379.github.io/badline/2023/09/20/day1/index.html">
 <meta property="og:site_name" content="代码随想录23期算法训练营">
 <meta property="og:description" content="今天是参加训练营的第一天，也是第一次写博客。之前刷题都是用 Python 刷的，感觉对数据结构理解很差，这次训练营打算 Python 写完之后再用 C 写一遍。27. 移除元素题目链接: 27.移除元素这道题考察的是对数组的理解，数组的元素不能直接删除，只能进行替换。由于之前刷过这道题，大概还记得是用快慢指针的方法来做的。Python 代码: 12345678910class Solution:">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="Python, C">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://z5424379.github.io/badline.github.io/2023/09/20/day1/">
+<link rel="canonical" href="https://z5424379.github.io/badline/2023/09/20/day1/">
 
 
 <script id="page-configurations">
@@ -95,7 +95,7 @@
 
   <div class="site-meta">
 
-    <a href="/badline.github.io/" class="brand" rel="start">
+    <a href="/badline/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">代码随想录23期算法训练营</h1>
       <span class="logo-line-after"><i></i></span>
@@ -115,12 +115,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/badline.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/badline/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/badline.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/badline/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -154,10 +154,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline.github.io/2023/09/20/day1/">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/09/20/day1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/badline.github.io/images/avatar.gif">
+      <meta itemprop="image" content="/badline/images/avatar.gif">
       <meta itemprop="name" content="Badline">
       <meta itemprop="description" content="主要编程语言: Python, C">
     </span>
@@ -225,7 +225,7 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/badline.github.io/2023/09/21/day2/" rel="next" title="Day2： 977.有序数组的平方，209.长度最小的子数组，59.螺旋矩阵II">
+    <a href="/badline/2023/09/21/day2/" rel="next" title="Day2： 977.有序数组的平方，209.长度最小的子数组，59.螺旋矩阵II">
       Day2： 977.有序数组的平方，209.长度最小的子数组，59.螺旋矩阵II <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -299,7 +299,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/badline.github.io/archives/">
+          <a href="/badline/archives/">
         
           <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
@@ -352,19 +352,19 @@
   </div>
 
   
-  <script src="/badline.github.io/lib/anime.min.js"></script>
-  <script src="/badline.github.io/lib/velocity/velocity.min.js"></script>
-  <script src="/badline.github.io/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/badline/lib/anime.min.js"></script>
+  <script src="/badline/lib/velocity/velocity.min.js"></script>
+  <script src="/badline/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/badline.github.io/js/utils.js"></script>
+<script src="/badline/js/utils.js"></script>
 
-<script src="/badline.github.io/js/motion.js"></script>
-
-
-<script src="/badline.github.io/js/schemes/pisces.js"></script>
+<script src="/badline/js/motion.js"></script>
 
 
-<script src="/badline.github.io/js/next-boot.js"></script>
+<script src="/badline/js/schemes/pisces.js"></script>
+
+
+<script src="/badline/js/next-boot.js"></script>
 
 
 
@@ -400,7 +400,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'algorithm.github.io',
       owner       : 'Badline',
       admin       : ['Badline'],
-      id          : '0d8074cf4a2088759993f2fad8029bc0',
+      id          : '4572987809704fb016aee0d1d8088dfe',
         language: 'zh-CN',
       distractionFreeMode: true
     });
