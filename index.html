@@ -151,6 +151,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/01/day9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/badline/images/avatar.gif">
+      <meta itemprop="name" content="Badline">
+      <meta itemprop="description" content="主要编程语言: Python, C">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码随想录23期算法训练营">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/badline/2023/10/01/day9/" class="post-title-link" itemprop="url">Day8：28. 实现 strStr() 459.重复的子字符串 字符串总结  双指针回顾</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-01 16:16:46 / 修改时间：22:31:45" itemprop="dateCreated datePublished" datetime="2023-10-01T16:16:46+11:00">2023-10-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="28-找出字符串中第一个匹配项的下标"><a href="#28-找出字符串中第一个匹配项的下标" class="headerlink" title="28. 找出字符串中第一个匹配项的下标"></a>28. 找出字符串中第一个匹配项的下标</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题是从文本串中找模式串, 如果用暴力的话就是O(n^2). 可以用KMP算法, 具体做法就是找到最长相等前后缀, 假如模式串为”aabaac”, 那么当文本串中的”aabaab”匹配到第六位b跟c不同的时候, 不需要回到模式串最开头位置重新开始比较, 从NEXT数组中可以得知第五位的”a”的最长相等前后缀是3, 所以可以回到模式串的第三个位置然后继续往后比较. 因为此时我已经知道了文本串中后三位的”aab”跟模式串的前三位是相同的了.<br>KMP算法中重要的点就是NEXT数组, 简单来说, 就是记录模式串中每个位置的最长相等前后缀, 并且在getNEXT函数里面就可以应用到<code>j=next[j]</code>来进行回退了</p>
+<h3 id="Python-代码"><a href="#Python-代码" class="headerlink" title="Python 代码"></a>Python 代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">strStr</span>(<span class="params">self, haystack: <span class="built_in">str</span>, needle: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">getNext</span>(<span class="params">s</span>):</span><br><span class="line">            <span class="built_in">next</span> = [<span class="number">0</span>] * <span class="built_in">len</span>(s)</span><br><span class="line">            <span class="built_in">next</span>[<span class="number">0</span>] = -<span class="number">1</span></span><br><span class="line">            j = -<span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(s)):</span><br><span class="line">                <span class="comment"># 如果不匹配, 一路回退找到最长匹配时候的j, 最多倒回到-1</span></span><br><span class="line">                <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j+<span class="number">1</span>]:</span><br><span class="line">                    j = <span class="built_in">next</span>[j]</span><br><span class="line">                <span class="comment"># 如果匹配, 最长相等前后缀的值加一</span></span><br><span class="line">                <span class="keyword">if</span> s[i] == s[j+<span class="number">1</span>]:</span><br><span class="line">                    j += <span class="number">1</span></span><br><span class="line">                <span class="built_in">next</span>[i] = j</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">next</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">next</span> = getNext(needle)</span><br><span class="line">        j = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(haystack)):</span><br><span class="line">            <span class="comment"># 不匹配的话, 倒回去找最长匹配的j</span></span><br><span class="line">            <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> haystack[i] != needle[j+<span class="number">1</span>]:</span><br><span class="line">                j = <span class="built_in">next</span>[j]</span><br><span class="line">            <span class="comment"># 如果匹配的话, 匹配长度加一</span></span><br><span class="line">            <span class="keyword">if</span> haystack[i] == needle[j+<span class="number">1</span>]:</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            <span class="comment"># 因为j初始是-1, 所以只要到needle长度-1就说明匹配上了</span></span><br><span class="line">            <span class="keyword">if</span> j == <span class="built_in">len</span>(needle)-<span class="number">1</span>:</span><br><span class="line">                <span class="comment"># 这个时候的i是匹配单词的最后一个字母位置, 需要返回第一个字母</span></span><br><span class="line">                <span class="keyword">return</span> i - <span class="built_in">len</span>(needle) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n+m)<br>空间复杂度：O(m) next数组的长度等于模式串的长度</p>
+<hr>
+<h2 id="459-重复的子字符串"><a href="#459-重复的子字符串" class="headerlink" title="459. 重复的子字符串"></a>459. 重复的子字符串</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/repeated-substring-pattern/description/">459. 重复的子字符串</a></p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>这道题除了暴力解法以外, 有一种做法是<code>t = s + s</code>, 然后判断<code>s in t[1:-1]</code>, 也就是说如果是重复子串, 拼接之后还会有一个自己.<br>更进一步的做法还是利用KMP算法, 如注释</p>
+<h3 id="Python-代码-1"><a href="#Python-代码-1" class="headerlink" title="Python 代码:"></a>Python 代码:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getNext</span>(<span class="params">self, <span class="built_in">next</span>, s</span>):</span><br><span class="line">        <span class="built_in">next</span>[<span class="number">0</span>] = -<span class="number">1</span></span><br><span class="line">        j = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j+<span class="number">1</span>]:</span><br><span class="line">                j = <span class="built_in">next</span>[j]</span><br><span class="line">            <span class="keyword">if</span> s[i] == s[j+<span class="number">1</span>]:</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            <span class="built_in">next</span>[i] = j</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">repeatedSubstringPattern</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="built_in">next</span> = [<span class="number">0</span>] * n</span><br><span class="line">        self.getNext(<span class="built_in">next</span>, s)</span><br><span class="line">        <span class="comment"># 假如s是重复子串, 那么s = n*x, x是最小子串</span></span><br><span class="line">        <span class="comment"># 那么最长相等前后缀为m*x, m = n-1</span></span><br><span class="line">        <span class="comment"># len(n*x) % len((n-m)*x) = 0</span></span><br><span class="line">        <span class="comment"># 最长相等前后缀m为next[n-1]+1, 因为最开始j设为-1了所以要+1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">next</span>[n-<span class="number">1</span>] != -<span class="number">1</span> <span class="keyword">and</span> n%(n-(<span class="built_in">next</span>[n-<span class="number">1</span>]+<span class="number">1</span>)) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度: O(n)<br>空间复杂度: O(n)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/09/27/day8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -849,7 +918,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/badline/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
