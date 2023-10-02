@@ -151,6 +151,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/03/day10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/badline/images/avatar.gif">
+      <meta itemprop="name" content="Badline">
+      <meta itemprop="description" content="主要编程语言: Python, C">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码随想录23期算法训练营">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/badline/2023/10/03/day10/" class="post-title-link" itemprop="url">Day10：232.用栈实现队列 225. 用队列实现栈</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-03 01:15:48 / 修改时间：02:07:28" itemprop="dateCreated datePublished" datetime="2023-10-03T01:15:48+11:00">2023-10-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="232-用栈实现队列"><a href="#232-用栈实现队列" class="headerlink" title="232.用栈实现队列"></a>232.用栈实现队列</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-queue-using-stacks/">232.用栈实现队列</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>栈是先进后出, 队列是先进先出. 可以用两个栈来模拟队列, 每次 push 的时候就正常的往入栈<code>stack_in</code>里面塞就行, 出队列的时候比较麻烦, 需要先把入栈中的所有元素都添加到出栈中, 相当于把元素倒过来了, 然后再从出栈里面拿<br>注意点: 如果出栈不为空, 就继续从出栈弹出就行, 直到出栈为空才需要从入栈添加, 而且每次都需要把入栈中的所有元素都添加进来.<br>如果两个栈的大小分别为 m 和 n(m&gt;n), 那么队列长度最大为 2n+1, 出栈可以存 n 个, 入栈存 n+1 个, 出栈先出来 n 个, 入栈进去 n 个, 然后把最后的 2n+1 个弹出来</p>
+<h3 id="Python-代码"><a href="#Python-代码" class="headerlink" title="Python 代码"></a>Python 代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 初始化两个栈, 入栈和出栈</span></span><br><span class="line">        self.stack_in = []</span><br><span class="line">        self.stack_out = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, x: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 进入队列时直接进入入栈就行</span></span><br><span class="line">        self.stack_in.append(x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 如果两个栈都是空的, 就说明队列是空的, 返回None</span></span><br><span class="line">        <span class="keyword">if</span> self.empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="comment"># 如果出栈还有元素, 直接从出栈弹出</span></span><br><span class="line">        <span class="keyword">if</span> self.stack_out:</span><br><span class="line">            <span class="keyword">return</span> self.stack_out.pop()</span><br><span class="line">        <span class="comment"># 如果出栈空了, 将入栈的所有元素都添加到出栈, 然后再从出栈弹出</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(self.stack_in)):</span><br><span class="line">            self.stack_out.append(self.stack_in.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack_out.pop()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">peek</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 看一眼ans, 然后再添加回出栈</span></span><br><span class="line">        ans = self.pop()</span><br><span class="line">        self.stack_out.append(ans)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">empty</span>(<span class="params">self</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 只有入栈跟出栈都是空的, 才说明队列是空的</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> (self.stack_in <span class="keyword">or</span> self.stack_out)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your MyQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = MyQueue()</span></span><br><span class="line"><span class="comment"># obj.push(x)</span></span><br><span class="line"><span class="comment"># param_2 = obj.pop()</span></span><br><span class="line"><span class="comment"># param_3 = obj.peek()</span></span><br><span class="line"><span class="comment"># param_4 = obj.empty()</span></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：push 和 empty 是 O(1), pop 和 peek 是 O(n)<br>空间复杂度：O(n+m)</p>
+<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C 代码"></a>C 代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> stackInTop, stackOutTop;</span><br><span class="line">    <span class="type">int</span> stackIn[<span class="number">100</span>], stackOut[<span class="number">100</span>];</span><br><span class="line">&#125; MyQueue;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MyQueue* <span class="title function_">myQueueCreate</span><span class="params">()</span> &#123;</span><br><span class="line">    MyQueue* <span class="built_in">queue</span> = (MyQueue*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(MyQueue));</span><br><span class="line">    <span class="built_in">queue</span>-&gt;stackInTop = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;stackOutTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">queue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">myQueuePush</span><span class="params">(MyQueue* obj, <span class="type">int</span> x)</span> &#123;</span><br><span class="line">    obj-&gt;stackIn[obj-&gt;stackInTop++] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">myQueueEmpty</span><span class="params">(MyQueue* obj)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> obj-&gt;stackInTop == <span class="number">0</span> &amp;&amp; obj-&gt;stackOutTop == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">myQueuePop</span><span class="params">(MyQueue* obj)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(myQueueEmpty(obj))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 复制栈顶指针, 减少对内存的访问</span></span><br><span class="line">    <span class="type">int</span> stackInTop = obj-&gt;stackInTop;</span><br><span class="line">    <span class="type">int</span> stackOutTop = obj-&gt;stackOutTop;</span><br><span class="line">    <span class="keyword">if</span>(stackOutTop != <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> obj-&gt;stackOut[--obj-&gt;stackOutTop];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(stackInTop&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        obj-&gt;stackOut[stackOutTop++] = obj-&gt;stackIn[--stackInTop];</span><br><span class="line">    &#125;</span><br><span class="line">    obj-&gt;stackOutTop = stackOutTop;</span><br><span class="line">    obj-&gt;stackInTop = stackInTop;</span><br><span class="line">    <span class="keyword">return</span> obj-&gt;stackOut[--obj-&gt;stackOutTop];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">myQueuePeek</span><span class="params">(MyQueue* obj)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans = myQueuePop(obj);</span><br><span class="line">    obj-&gt;stackOut[obj-&gt;stackOutTop++] = ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">myQueueFree</span><span class="params">(MyQueue* obj)</span> &#123;</span><br><span class="line">    obj-&gt;stackInTop = <span class="number">0</span>;</span><br><span class="line">    obj-&gt;stackOutTop = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyQueue struct will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyQueue* obj = myQueueCreate();</span></span><br><span class="line"><span class="comment"> * myQueuePush(obj, x);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * int param_2 = myQueuePop(obj);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * int param_3 = myQueuePeek(obj);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * bool param_4 = myQueueEmpty(obj);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * myQueueFree(obj);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="225-用队列实现栈"><a href="#225-用队列实现栈" class="headerlink" title="225. 用队列实现栈"></a>225. 用队列实现栈</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-stack-using-queues/description/">225. 用队列实现栈</a></p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>队列模拟栈比较简单, 一个队列就能完成, 添加元素的时候正常添加就行, 然后需要弹出元素的时候, 把整个队列除了最后一个元素以外, 全部都弹出重新添加一遍, 这样就可以把队列尾的元素弹出来了</p>
+<h3 id="Python-代码-1"><a href="#Python-代码-1" class="headerlink" title="Python 代码:"></a>Python 代码:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyStack</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.queue = deque()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, x: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.queue.append(x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> self.empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(self.queue)-<span class="number">1</span>):</span><br><span class="line">            self.queue.append(self.queue.popleft())</span><br><span class="line">        <span class="keyword">return</span> self.queue.popleft()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">top</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        tmp = self.pop()</span><br><span class="line">        self.queue.append(tmp)</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">empty</span>(<span class="params">self</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.queue) == <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your MyStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = MyStack()</span></span><br><span class="line"><span class="comment"># obj.push(x)</span></span><br><span class="line"><span class="comment"># param_2 = obj.pop()</span></span><br><span class="line"><span class="comment"># param_3 = obj.top()</span></span><br><span class="line"><span class="comment"># param_4 = obj.empty()</span></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度: O(n)<br>空间复杂度: O(n)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/01/day9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -165,7 +236,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/badline/2023/10/01/day9/" class="post-title-link" itemprop="url">Day8：28. 实现 strStr() 459.重复的子字符串 字符串总结  双指针回顾</a>
+            <a href="/badline/2023/10/01/day9/" class="post-title-link" itemprop="url">Day9：28. 实现 strStr() 459.重复的子字符串 字符串总结  双指针回顾</a>
         </h2>
 
         <div class="post-meta">
@@ -174,10 +245,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-10-01 16:16:46 / 修改时间：22:31:45" itemprop="dateCreated datePublished" datetime="2023-10-01T16:16:46+11:00">2023-10-01</time>
+              <time title="创建时间：2023-10-01 16:16:46" itemprop="dateCreated datePublished" datetime="2023-10-01T16:16:46+11:00">2023-10-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-03 01:15:46" itemprop="dateModified" datetime="2023-10-03T01:15:46+11:00">2023-10-03</time>
+              </span>
 
           
 
@@ -918,7 +995,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/badline/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
