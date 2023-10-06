@@ -176,7 +176,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-10-06 15:37:50 / 修改时间：15:42:24" itemprop="dateCreated datePublished" datetime="2023-10-06T15:37:50+11:00">2023-10-06</time>
+              <time title="创建时间：2023-10-06 15:37:50 / 修改时间：16:12:50" itemprop="dateCreated datePublished" datetime="2023-10-06T15:37:50+11:00">2023-10-06</time>
             </span>
 
           
@@ -193,10 +193,50 @@
           <h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><h3 id="二叉树的种类"><a href="#二叉树的种类" class="headerlink" title="二叉树的种类"></a>二叉树的种类</h3><ul>
 <li>满二叉树<ul>
 <li>如果一个二叉树只有度为0的节点和度为2的节点，并且度为0的节点在同一层上，则这棵二叉树为满二叉树</li>
-<li><a href="%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.jpg">满二叉树</a></li>
+<li><img src="pictures/day13/满二叉树.jpg" width=20% height=20%></li>
+<li>深度为k的满二叉树，有2^k-1个节点</li>
+</ul>
+</li>
+<li>完全二叉树<ul>
+<li>在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为h层(h从1开始)，则该层包含1~2^(h-1)哥节点</li>
+<li><img src="/badline/pictures/day13/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91.jpg" alt="完全二叉树">{:height&#x3D;”40%” width&#x3D;”50%”}</li>
+<li>堆就是一个完全二叉树，同时保证父子节点的顺序关系</li>
+</ul>
+</li>
+<li>二叉搜索树<ul>
+<li>二叉搜索树是一个<strong>有序树</strong></li>
+<li>若它的左子树不为空，则左子树上所有节点的值均小于它的根节点的值</li>
+<li>若它的右子树不为空，则右子树上所有节点的值均大于它的根节点的值</li>
+<li>它的左、右子树也分别为二叉排序树</li>
+<li><img src="/badline/pictures/day13/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.jpg" alt="二叉搜索树">{:height&#x3D;”40%” width&#x3D;”50%”}</li>
+</ul>
+</li>
+<li>平衡二叉搜索树<ul>
+<li>又被称为AVL(Adelson-Velsky and Landis)树</li>
+<li>它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</li>
+<li><img src="/badline/pictures/day13/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.jpg" alt="平衡二叉搜索树">{:height&#x3D;”40%” width&#x3D;”50%”}</li>
 </ul>
 </li>
 </ul>
+<h3 id="二叉树的存储方式"><a href="#二叉树的存储方式" class="headerlink" title="二叉树的存储方式"></a>二叉树的存储方式</h3><ul>
+<li><strong>二叉树可以链式存储，也可以顺序存储</strong></li>
+<li>链式存储方式就用指针，顺序存储的方式就是用数组</li>
+<li><img src="/badline/pictures/day13/%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8.jpg" alt="链式存储">{:height&#x3D;”30%” width&#x3D;”30%”}</li>
+<li><img src="/badline/pictures/day13/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8.jpg" alt="顺序存储">{:height&#x3D;”30%” width&#x3D;”30%”}</li>
+</ul>
+<h3 id="二叉树的遍历方式"><a href="#二叉树的遍历方式" class="headerlink" title="二叉树的遍历方式"></a>二叉树的遍历方式</h3><ul>
+<li>深度优先遍历: 先往深处走，遇到叶子结点再往回走<ul>
+<li>前序遍历: 中左右</li>
+<li>中序遍历: 左中右</li>
+<li>后序遍历: 左右中</li>
+<li><img src="/badline/pictures/day13/%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F.jpg" alt="前中后序">{:height&#x3D;”40%” width&#x3D;”50%”}</li>
+</ul>
+</li>
+<li>广度优先遍历: 一层一层的去遍历</li>
+</ul>
+<h3 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h3><h6 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val, left = <span class="literal">None</span>, right = <span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
+<h6 id="C"><a href="#C" class="headerlink" title="C"></a>C</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">right</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* <span class="title function_">createTreeNode</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">    TreeNode* newNode = (TreeNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TreeNode));</span><br><span class="line">    <span class="keyword">if</span>(newNode)&#123;    <span class="comment">// malloc可能因为某种原因(如内存不足)无法分配内存，将返回NULL</span></span><br><span class="line">        newNode-&gt;val = x;</span><br><span class="line">        newNode-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">        newNode-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a>239. 滑动窗口最大值</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.<br>当窗口滑动的时候, 如果左边被滑出去的值跟队头一样, 那就从队头 popleft. 然后右边添加进来的新元素加入到单调队列中.<br>注意后面的值是可能等于前面的值的, 这样是为了保证类似<code>3, 3, 3, -1, -2</code>这种情况, 窗口滑动时第一个 3 出去, 还能有两个 3.<br>如果把等于的也剔除掉, 就会出现明明窗口里还有 3, 但是队列里已经没有了的情况</p>
 <h3 id="Python-代码"><a href="#Python-代码" class="headerlink" title="Python 代码"></a>Python 代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义单调队列</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.queue = deque() <span class="comment"># 用双向队列deque来实现</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="comment"># 如果队头的值等于value的话, 就把队头移出去</span></span><br><span class="line">        <span class="keyword">if</span> self.queue <span class="keyword">and</span> self.queue[<span class="number">0</span>] == value:</span><br><span class="line">            self.queue.popleft()    <span class="comment"># list移除第一个元素的话需要O(n)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="comment"># 如果队尾比value小的话, 就把队尾移除, 保证队列是单调非增的</span></span><br><span class="line">        <span class="keyword">while</span> self.queue <span class="keyword">and</span> self.queue[-<span class="number">1</span>] &lt; value:</span><br><span class="line">            self.queue.pop()</span><br><span class="line">        self.queue.append(value)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查询队列的最大值, 也就是队头</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">front</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.queue[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        que = MyQueue()</span><br><span class="line">        res = []</span><br><span class="line">        <span class="comment"># 先添加前k个元素</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            que.push(nums[i])</span><br><span class="line">        <span class="comment"># res记录前k个元素的最大值</span></span><br><span class="line">        res.append(que.front())</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k, <span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="comment"># 窗口左边的被移出去了</span></span><br><span class="line">            que.pop(nums[i-k])</span><br><span class="line">            <span class="comment"># 窗口右边的添加进来</span></span><br><span class="line">            que.push(nums[i])</span><br><span class="line">            <span class="comment"># 记录当前窗口的最大值</span></span><br><span class="line">            res.append(que.front())</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br></pre></td></tr></table></figure>
