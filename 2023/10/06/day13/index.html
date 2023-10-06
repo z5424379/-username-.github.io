@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"z5424379.github.io","root":"/badline/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="239. 滑动窗口最大值题目链接: 239. 滑动窗口最大值 思路自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.当窗口滑动的时候, 如果左边被滑出去的值跟队头一样, 那就从队头 popleft. 然后右边添加进来的新元素加入到单调队列中.注意后面的值是可能等于">
+  <meta name="description" content="理论基础二叉树的种类 满二叉树 如果一个二叉树只有度为0的节点和度为2的节点，并且度为0的节点在同一层上，则这棵二叉树为满二叉树 满二叉树    239. 滑动窗口最大值题目链接: 239. 滑动窗口最大值 思路自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.当">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day12：239. 滑动窗口最大值 347.前 K 个高频元素">
-<meta property="og:url" content="https://z5424379.github.io/badline/2023/10/04/day12/index.html">
+<meta property="og:title" content="Day13：二叉树">
+<meta property="og:url" content="https://z5424379.github.io/badline/2023/10/06/day13/index.html">
 <meta property="og:site_name" content="代码随想录23期算法训练营">
-<meta property="og:description" content="239. 滑动窗口最大值题目链接: 239. 滑动窗口最大值 思路自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.当窗口滑动的时候, 如果左边被滑出去的值跟队头一样, 那就从队头 popleft. 然后右边添加进来的新元素加入到单调队列中.注意后面的值是可能等于">
+<meta property="og:description" content="理论基础二叉树的种类 满二叉树 如果一个二叉树只有度为0的节点和度为2的节点，并且度为0的节点在同一层上，则这棵二叉树为满二叉树 满二叉树    239. 滑动窗口最大值题目链接: 239. 滑动窗口最大值 思路自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.当">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-04T06:16:04.530Z">
-<meta property="article:modified_time" content="2023-10-05T12:12:01.424Z">
+<meta property="article:published_time" content="2023-10-06T04:37:50.496Z">
+<meta property="article:modified_time" content="2023-10-06T04:42:24.555Z">
 <meta property="article:author" content="Badline">
 <meta property="article:tag" content="Python, C">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://z5424379.github.io/badline/2023/10/04/day12/">
+<link rel="canonical" href="https://z5424379.github.io/badline/2023/10/06/day13/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Day12：239. 滑动窗口最大值 347.前 K 个高频元素 | 代码随想录23期算法训练营</title>
+  <title>Day13：二叉树 | 代码随想录23期算法训练营</title>
   
 
 
@@ -154,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/04/day12/">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/06/day13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/badline/images/avatar.gif">
@@ -167,7 +167,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Day12：239. 滑动窗口最大值 347.前 K 个高频元素
+          Day13：二叉树
         </h1>
 
         <div class="post-meta">
@@ -176,16 +176,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-10-04 17:16:04" itemprop="dateCreated datePublished" datetime="2023-10-04T17:16:04+11:00">2023-10-04</time>
+              <time title="创建时间：2023-10-06 15:37:50 / 修改时间：15:42:24" itemprop="dateCreated datePublished" datetime="2023-10-06T15:37:50+11:00">2023-10-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-05 23:12:01" itemprop="dateModified" datetime="2023-10-05T23:12:01+11:00">2023-10-05</time>
-              </span>
 
           
 
@@ -198,7 +192,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a>239. 滑动窗口最大值</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></p>
+        <h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><h3 id="二叉树的种类"><a href="#二叉树的种类" class="headerlink" title="二叉树的种类"></a>二叉树的种类</h3><ul>
+<li>满二叉树<ul>
+<li>如果一个二叉树只有度为0的节点和度为2的节点，并且度为0的节点在同一层上，则这棵二叉树为满二叉树</li>
+<li><a href="%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.jpg">满二叉树</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a>239. 滑动窗口最大值</h2><p>题目链接: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>自己写一个单调队列, 需要保证队列是从大到小的, 一个新元素进来的时候, 将比这个新元素小的队尾一个个 pop 掉, 这样保证整个队列后面的值是小于等于前面的值的, 那么队头就是最大的.<br>当窗口滑动的时候, 如果左边被滑出去的值跟队头一样, 那就从队头 popleft. 然后右边添加进来的新元素加入到单调队列中.<br>注意后面的值是可能等于前面的值的, 这样是为了保证类似<code>3, 3, 3, -1, -2</code>这种情况, 窗口滑动时第一个 3 出去, 还能有两个 3.<br>如果把等于的也剔除掉, 就会出现明明窗口里还有 3, 但是队列里已经没有了的情况</p>
 <h3 id="Python-代码"><a href="#Python-代码" class="headerlink" title="Python 代码"></a>Python 代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义单调队列</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.queue = deque() <span class="comment"># 用双向队列deque来实现</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="comment"># 如果队头的值等于value的话, 就把队头移出去</span></span><br><span class="line">        <span class="keyword">if</span> self.queue <span class="keyword">and</span> self.queue[<span class="number">0</span>] == value:</span><br><span class="line">            self.queue.popleft()    <span class="comment"># list移除第一个元素的话需要O(n)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="comment"># 如果队尾比value小的话, 就把队尾移除, 保证队列是单调非增的</span></span><br><span class="line">        <span class="keyword">while</span> self.queue <span class="keyword">and</span> self.queue[-<span class="number">1</span>] &lt; value:</span><br><span class="line">            self.queue.pop()</span><br><span class="line">        self.queue.append(value)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查询队列的最大值, 也就是队头</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">front</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.queue[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        que = MyQueue()</span><br><span class="line">        res = []</span><br><span class="line">        <span class="comment"># 先添加前k个元素</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            que.push(nums[i])</span><br><span class="line">        <span class="comment"># res记录前k个元素的最大值</span></span><br><span class="line">        res.append(que.front())</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k, <span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="comment"># 窗口左边的被移出去了</span></span><br><span class="line">            que.pop(nums[i-k])</span><br><span class="line">            <span class="comment"># 窗口右边的添加进来</span></span><br><span class="line">            que.push(nums[i])</span><br><span class="line">            <span class="comment"># 记录当前窗口的最大值</span></span><br><span class="line">            res.append(que.front())</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -230,13 +231,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/badline/2023/10/03/day11/" rel="prev" title="Day11：20. 有效的括号 1047. 删除字符串中的所有相邻重复项 150. 逆波兰表达式求值">
-      <i class="fa fa-chevron-left"></i> Day11：20. 有效的括号 1047. 删除字符串中的所有相邻重复项 150. 逆波兰表达式求值
+    <a href="/badline/2023/10/04/day12/" rel="prev" title="Day12：239. 滑动窗口最大值 347.前 K 个高频元素">
+      <i class="fa fa-chevron-left"></i> Day12：239. 滑动窗口最大值 347.前 K 个高频元素
     </a></div>
-      <div class="post-nav-item">
-    <a href="/badline/2023/10/06/day13/" rel="next" title="Day13：二叉树">
-      Day13：二叉树 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -296,7 +294,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#239-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">239. 滑动窗口最大值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">Python 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">C 思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%BB%A3%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">C 代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#347-%E5%89%8D-K-%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">347.前 K 个高频元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E4%BB%A3%E7%A0%81-1"><span class="nav-number">2.2.</span> <span class="nav-text">Python 代码:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%BB%A3%E7%A0%81-1"><span class="nav-number">2.3.</span> <span class="nav-text">C 代码</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">理论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">二叉树的种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#239-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">239. 滑动窗口最大值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">Python 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%80%9D%E8%B7%AF"><span class="nav-number">2.3.</span> <span class="nav-text">C 思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">C 代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#347-%E5%89%8D-K-%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">347.前 K 个高频元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">3.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.2.</span> <span class="nav-text">Python 代码:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.3.</span> <span class="nav-text">C 代码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -409,7 +407,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'badiline',
       owner       : 'Badline',
       admin       : ['Badline'],
-      id          : '446986007cc7aff5b11ca35d26c5173e',
+      id          : 'bb9d5290ab8f70811aa3e91f5a1f8144',
         language: 'zh-CN',
       distractionFreeMode: true
     });
