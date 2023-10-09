@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/badline/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/badline/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/badline/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/badline/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/badline/css/main.css">
+
+
+<link rel="stylesheet" href="/badline/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"z5424379.github.io","root":"/badline/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="110. &amp;#x5E73;&amp;#x8861;&amp;#x4E8C;&amp;#x53C9;&amp;#x6811;&amp;#x9898;&amp;#x76EE;&amp;#x94FE;&amp;#x63A5;110. &amp;#x5E73;&amp;#x8861;&amp;#x4E8C;&amp;#x53C9;&amp;#x6811; &amp;#x601D;&amp;#x8DEF;&amp;#x9012;&amp;#x5F52;&amp;#xFF0C;&amp;#x8BA1;&amp;#x7B97;&amp;#x5DE6;&amp;#x53F3;&amp;#x5B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day16 110.平衡二叉树  257. 二叉树的所有路径  404.左叶子之和">
+<meta property="og:url" content="https://z5424379.github.io/badline/2023/10/10/day16/index.html">
+<meta property="og:site_name" content="代码随想录23期算法训练营">
+<meta property="og:description" content="110. &amp;#x5E73;&amp;#x8861;&amp;#x4E8C;&amp;#x53C9;&amp;#x6811;&amp;#x9898;&amp;#x76EE;&amp;#x94FE;&amp;#x63A5;110. &amp;#x5E73;&amp;#x8861;&amp;#x4E8C;&amp;#x53C9;&amp;#x6811; &amp;#x601D;&amp;#x8DEF;&amp;#x9012;&amp;#x5F52;&amp;#xFF0C;&amp;#x8BA1;&amp;#x7B97;&amp;#x5DE6;&amp;#x53F3;&amp;#x5B">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-09T13:44:50.000Z">
+<meta property="article:modified_time" content="2023-10-09T18:46:46.691Z">
+<meta property="article:author" content="Badline">
+<meta property="article:tag" content="Python, C">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://z5424379.github.io/badline/2023/10/10/day16/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>day16 110.平衡二叉树  257. 二叉树的所有路径  404.左叶子之和 | 代码随想录23期算法训练营</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/badline/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">代码随想录23期算法训练营</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/badline/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/badline/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/z5424379/algorithm.github.io" class="github-corner" title="Badline Github" aria-label="Badline Github" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/10/day16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/badline/images/avatar.gif">
+      <meta itemprop="name" content="Badline">
+      <meta itemprop="description" content="主要编程语言: Python, C">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码随想录23期算法训练营">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          day16 110.平衡二叉树  257. 二叉树的所有路径  404.左叶子之和
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-10 00:44:50 / 修改时间：05:46:46" itemprop="dateCreated datePublished" datetime="2023-10-10T00:44:50+11:00">2023-10-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="110-&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;"><a href="#110-&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;" class="headerlink" title="110. &#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;"></a>110. &#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</h2><p>&#x9898;&#x76EE;&#x94FE;&#x63A5;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/balanced-binary-tree/">110. &#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</a></p>
+<h3 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;"></a>&#x601D;&#x8DEF;</h3><p>&#x9012;&#x5F52;&#xFF0C;&#x8BA1;&#x7B97;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x76F8;&#x5DEE;&#x8D85;&#x8FC7; 1 &#x5219;&#x8FD4;&#x56DE;-1&#x3002;&#x5982;&#x679C;&#x6536;&#x5230;&#x8FD4;&#x56DE;-1&#xFF0C;&#x8BF4;&#x660E;&#x4E0B;&#x9762;&#x6709;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x5B50;&#x6811;&#x3002;</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isBalanced</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># &#x8BA1;&#x7B97;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x76F8;&#x5DEE;&#x8D85;&#x8FC7;1&#x5219;&#x8FD4;&#x56DE;-1</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">getHeight</span>(<span class="params">root</span>):</span><br><span class="line">            <span class="comment"># &#x5230;&#x5E95;&#x4E86;&#xFF0C;&#x8FD4;&#x56DE;&#x9AD8;&#x5EA6;0</span></span><br><span class="line">            <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="comment"># &#x8BA1;&#x7B97;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x9AD8;&#x5EA6;, &#x5982;&#x679C;&#x6709;-1&#x7684;&#x8BDD;&#xFF0C;&#x8BF4;&#x660E;&#x4E0B;&#x9762;&#x6709;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x5B50;&#x6811;</span></span><br><span class="line">            left_height = getHeight(root.left)</span><br><span class="line">            <span class="keyword">if</span> left_height == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            right_height = getHeight(root.right)</span><br><span class="line">            <span class="keyword">if</span> right_height == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            <span class="comment"># &#x5982;&#x679C;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x9AD8;&#x5EA6;&#x76F8;&#x5DEE;&#x8D85;&#x8FC7;1&#xFF0C;&#x8BF4;&#x660E;&#x4E0D;&#x5E73;&#x8861;&#xFF0C;&#x8FD4;&#x56DE;-1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">abs</span>(left_height - right_height) &gt; <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            <span class="comment"># &#x8FD4;&#x56DE;&#x4E24;&#x4E2A;&#x9AD8;&#x5EA6;&#x4E2D;&#x5927;&#x7684;&#x90A3;&#x4E2A;+1&#xFF0C;&#x5C31;&#x662F;&#x4E0A;&#x4E00;&#x5C42;&#x7684;&#x9AD8;&#x5EA6;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(left_height, right_height) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x8FD4;&#x56DE;-1&#x8BF4;&#x660E;&#x4E0D;&#x5E73;&#x8861;</span></span><br><span class="line">        <span class="keyword">if</span> getHeight(root) == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() {}</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) {</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isBalanced</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        <span class="keyword">if</span>(getHeight(root) == -<span class="number">1</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getHeight</span><span class="params">(TreeNode root)</span>{</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">left_height</span> <span class="operator">=</span> getHeight(root.left);</span><br><span class="line">        <span class="keyword">if</span>(left_height == -<span class="number">1</span>){</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">right_height</span> <span class="operator">=</span> getHeight(root.right);</span><br><span class="line">        <span class="keyword">if</span>(right_height == -<span class="number">1</span>){</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(Math.abs(left_height-right_height) &gt; <span class="number">1</span>){</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> Math.max(left_height, right_height) + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="257-&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6240;&#x6709;&#x8DEF;&#x5F84;"><a href="#257-&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6240;&#x6709;&#x8DEF;&#x5F84;" class="headerlink" title="257. &#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6240;&#x6709;&#x8DEF;&#x5F84;"></a>257. &#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6240;&#x6709;&#x8DEF;&#x5F84;</h2><p>&#x9898;&#x76EE;&#x94FE;&#x63A5;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-paths/">257. &#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6240;&#x6709;&#x8DEF;&#x5F84;</a></p>
+<h3 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">binaryTreePaths</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">findPath</span>(<span class="params">root, res, path</span>):</span><br><span class="line">            <span class="comment"># &#x6DFB;&#x52A0;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5230;path</span></span><br><span class="line">            path.append(root.val)</span><br><span class="line">            <span class="comment"># &#x5230;&#x8FBE;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x628A;path&#x6DFB;&#x52A0;&#x8FDB;res</span></span><br><span class="line">            <span class="keyword">if</span> root.left == <span class="literal">None</span> <span class="keyword">and</span> root.right == <span class="literal">None</span>:</span><br><span class="line">                res.append(<span class="string">&quot;-&gt;&quot;</span>.join(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>, path))))</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="comment"># &#x5982;&#x679C;&#x6709;&#x5DE6;&#x5B50;&#x6811;&#xFF0C;&#x5F80;&#x5DE6;&#x8FB9;&#x9012;&#x5F52;</span></span><br><span class="line">            <span class="keyword">if</span> root.left:</span><br><span class="line">                findPath(root.left, res, path)</span><br><span class="line">                path.pop()  <span class="comment"># &#x56DE;&#x6EAF;&#xFF0C;&#x628A;&#x521A;&#x521A;&#x6DFB;&#x52A0;&#x8FDB;path&#x7684;&#x90A3;&#x4E2A;&#x5143;&#x7D20;&#x79FB;&#x51FA;&#x53BB;</span></span><br><span class="line">            <span class="keyword">if</span> root.right:</span><br><span class="line">                findPath(root.right, res, path)</span><br><span class="line">                path.pop()</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        findPath(root, res, [])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() {}</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) {</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">binaryTreePaths</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        }</span><br><span class="line">        List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        findPath(root, res, path);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">findPath</span><span class="params">(TreeNode root, List&lt;String&gt; res, List&lt;Integer&gt; path)</span>{</span><br><span class="line">        path.add(root.val);</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>){</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;path.size()-<span class="number">1</span>;i++){</span><br><span class="line">                sb.append(path.get(i)).append(<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">            }</span><br><span class="line">            sb.append(path.get(path.size()-<span class="number">1</span>));</span><br><span class="line">            <span class="comment">// System.out.println(sb);</span></span><br><span class="line">            res.add(sb.toString());</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(root.left != <span class="literal">null</span>){</span><br><span class="line">            findPath(root.left, res, path);</span><br><span class="line">            path.remove(path.size()-<span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(root.right != <span class="literal">null</span>){</span><br><span class="line">            findPath(root.right, res, path);</span><br><span class="line">            path.remove(path.size()-<span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="404-&#x5DE6;&#x53F6;&#x5B50;&#x4E4B;&#x548C;"><a href="#404-&#x5DE6;&#x53F6;&#x5B50;&#x4E4B;&#x548C;" class="headerlink" title="404. &#x5DE6;&#x53F6;&#x5B50;&#x4E4B;&#x548C;"></a>404. &#x5DE6;&#x53F6;&#x5B50;&#x4E4B;&#x548C;</h2><p>&#x9898;&#x76EE;&#x94FE;&#x63A5;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sum-of-left-leaves/">404. &#x5DE6;&#x53F6;&#x5B50;&#x4E4B;&#x548C;</a></p>
+<h3 id="&#x601D;&#x8DEF;-1"><a href="#&#x601D;&#x8DEF;-1" class="headerlink" title="&#x601D;&#x8DEF;"></a>&#x601D;&#x8DEF;</h3><p>&#x9012;&#x5F52;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5C31;&#x83B7;&#x5F97;&#x8FD9;&#x4E2A;&#x53F6;&#x5B50;&#x7684;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x9012;&#x5F52;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x3002;</p>
+<h3 id="Python-2"><a href="#Python-2" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sumOfLeftLeaves</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># &#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E3A;&#x7A7A;&#x6216;&#x8005;&#x4E3A;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#xFF0C;&#x8FD4;&#x56DE;0</span></span><br><span class="line">        <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> root.left == <span class="literal">None</span> <span class="keyword">and</span> root.right == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="comment"># &#x5DE6;&#x5B50;&#x6811;&#x7684;&#x603B;&#x548C;</span></span><br><span class="line">        leftValue = self.sumOfLeftLeaves(root.left)</span><br><span class="line">        <span class="comment"># &#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x662F;&#x5DE6;&#x53F6;&#x5B50;</span></span><br><span class="line">        <span class="keyword">if</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.left.left <span class="keyword">and</span> <span class="keyword">not</span> root.left.right:</span><br><span class="line">            leftValue = root.left.val</span><br><span class="line">        <span class="comment"># &#x53F3;&#x5B50;&#x6811;&#x7684;&#x603B;&#x548C;</span></span><br><span class="line">        rightValue = self.sumOfLeftLeaves(root.right)</span><br><span class="line">        <span class="keyword">return</span> leftValue + rightValue</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java-2"><a href="#Java-2" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() {}</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) {</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftValue</span> <span class="operator">=</span> sumOfLeftLeaves(root.left);</span><br><span class="line">        <span class="keyword">if</span>(root.left != <span class="literal">null</span> &amp;&amp; root.left.left == <span class="literal">null</span> &amp;&amp; root.left.right == <span class="literal">null</span>){</span><br><span class="line">            leftValue = root.left.val;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">rightValue</span> <span class="operator">=</span> sumOfLeftLeaves(root.right);</span><br><span class="line">        <span class="keyword">return</span> leftValue + rightValue;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/badline/2023/10/08/day15/" rel="prev" title="day15 104.二叉树的最大深度  559.n叉树的最大深度 111.二叉树的最小深度 222.完全二叉树的节点个数">
+      <i class="fa fa-chevron-left"></i> day15 104.二叉树的最大深度  559.n叉树的最大深度 111.二叉树的最小深度 222.完全二叉树的节点个数
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">110. 平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.2.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">1.3.</span> <span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#257-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84"><span class="nav-number">2.</span> <span class="nav-text">257. 二叉树的所有路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-1"><span class="nav-number">2.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-1"><span class="nav-number">2.2.</span> <span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404-%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C"><span class="nav-number">3.</span> <span class="nav-text">404. 左叶子之和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">3.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-2"><span class="nav-number">3.2.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-2"><span class="nav-number">3.3.</span> <span class="nav-text">Java</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Badline</p>
+  <div class="site-description" itemprop="description">主要编程语言: Python, C</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/badline/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Badline</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/badline/lib/anime.min.js"></script>
+  <script src="/badline/lib/velocity/velocity.min.js"></script>
+  <script src="/badline/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/badline/js/utils.js"></script>
+
+<script src="/badline/js/motion.js"></script>
+
+
+<script src="/badline/js/schemes/pisces.js"></script>
+
+
+<script src="/badline/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '71ec8cdbfe054abe4e86',
+      clientSecret: 'a9136163db977f4e2988910ccf6e7647e4da2e94',
+      repo        : 'badiline',
+      owner       : 'Badline',
+      admin       : ['Badline'],
+      id          : '583d3b655ae908b063547d5cf7b429b4',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
