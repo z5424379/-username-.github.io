@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"z5424379.github.io","root":"/badline/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="理论基础 回溯算法的本质就是穷举，穷举所有可能的结果，然后找到满足条件的结果。 如果想让回溯法高校一些，可以加一些剪枝的操作，但是本质还是穷举 回溯法解决的问题 组合问题: N 个数里面按一定规则找到 k 个数的集合 排列问题: N 个数按一定规则全排列，有几种排列方式 切割问题: 一个字符串按一定规则有几种切割方式 子集问题: 一个 N 个数的集合里有多少符合条件的子集 棋盘问题: N 皇后，解">
+  <meta name="description" content="216.组合总和 III传送门 回溯1234567891011121314151617class Solution:    def combinationSum3(self, k: int, n: int) -&gt; List[List[int]]:        res &#x3D; []        def backtracking(i, cur, s):            if s &gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day22 回溯算法 77.组合">
-<meta property="og:url" content="https://z5424379.github.io/badline/2023/10/16/day24/index.html">
+<meta property="og:title" content="day25 216.组合总和III 17.电话号码的字母组合">
+<meta property="og:url" content="https://z5424379.github.io/badline/2023/10/18/day25/index.html">
 <meta property="og:site_name" content="代码随想录23期算法训练营">
-<meta property="og:description" content="理论基础 回溯算法的本质就是穷举，穷举所有可能的结果，然后找到满足条件的结果。 如果想让回溯法高校一些，可以加一些剪枝的操作，但是本质还是穷举 回溯法解决的问题 组合问题: N 个数里面按一定规则找到 k 个数的集合 排列问题: N 个数按一定规则全排列，有几种排列方式 切割问题: 一个字符串按一定规则有几种切割方式 子集问题: 一个 N 个数的集合里有多少符合条件的子集 棋盘问题: N 皇后，解">
+<meta property="og:description" content="216.组合总和 III传送门 回溯1234567891011121314151617class Solution:    def combinationSum3(self, k: int, n: int) -&gt; List[List[int]]:        res &#x3D; []        def backtracking(i, cur, s):            if s &gt;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-16T13:35:25.000Z">
-<meta property="article:modified_time" content="2023-10-16T13:03:10.773Z">
+<meta property="article:published_time" content="2023-10-18T02:28:14.000Z">
+<meta property="article:modified_time" content="2023-10-18T02:56:52.425Z">
 <meta property="article:author" content="Badline">
 <meta property="article:tag" content="Python, C">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://z5424379.github.io/badline/2023/10/16/day24/">
+<link rel="canonical" href="https://z5424379.github.io/badline/2023/10/18/day25/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>day22 回溯算法 77.组合 | 代码随想录23期算法训练营</title>
+  <title>day25 216.组合总和III 17.电话号码的字母组合 | 代码随想录23期算法训练营</title>
   
 
 
@@ -154,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/16/day24/">
+    <link itemprop="mainEntityOfPage" href="https://z5424379.github.io/badline/2023/10/18/day25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/badline/images/avatar.gif">
@@ -167,7 +167,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          day22 回溯算法 77.组合
+          day25 216.组合总和III 17.电话号码的字母组合
         </h1>
 
         <div class="post-meta">
@@ -178,7 +178,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-10-16 21:35:25 / 修改时间：21:03:10" itemprop="dateCreated datePublished" datetime="2023-10-16T21:35:25+08:00">2023-10-16</time>
+              <time title="创建时间：2023-10-18 10:28:14 / 修改时间：10:56:52" itemprop="dateCreated datePublished" datetime="2023-10-18T10:28:14+08:00">2023-10-18</time>
             </span>
 
           
@@ -192,26 +192,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><ul>
-<li>回溯算法的本质就是穷举，穷举所有可能的结果，然后找到满足条件的结果。</li>
-<li>如果想让回溯法高校一些，可以加一些剪枝的操作，但是本质还是穷举</li>
-<li>回溯法解决的问题<ul>
-<li>组合问题: N 个数里面按一定规则找到 k 个数的集合</li>
-<li>排列问题: N 个数按一定规则全排列，有几种排列方式</li>
-<li>切割问题: 一个字符串按一定规则有几种切割方式</li>
-<li>子集问题: 一个 N 个数的集合里有多少符合条件的子集</li>
-<li>棋盘问题: N 皇后，解数独等等</li>
-</ul>
-</li>
-<li>回溯法解决的问题都可以抽象成树形结构，然后使用 DFS 遍历整棵树，每次遍历到叶子节点的时候，就得到了一个正确的结果。</li>
-<li>回溯法模板</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">backtracking</span><span class="params">(参数)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (终止条件)&#123;</span><br><span class="line">        存放结果;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (选择:本层集合中元素(树中节点孩子的数量就是集合的大小))&#123;</span><br><span class="line">        处理节点;</span><br><span class="line">        backtracking(路径,选择列表); <span class="comment">// 递归</span></span><br><span class="line">        回溯，撤销处理结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="216-组合总和-III"><a href="#216-组合总和-III" class="headerlink" title="216.组合总和 III"></a>216.组合总和 III</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum-iii/">传送门</a></p>
+<h3 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">combinationSum3</span>(<span class="params">self, k: <span class="built_in">int</span>, n: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">i, cur, s</span>):</span><br><span class="line">            <span class="keyword">if</span> s &gt; n:   <span class="comment"># 如果已经超了，就直接返回</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(cur) == k:   <span class="comment"># 达到k个数，判断是否符合条件</span></span><br><span class="line">                <span class="keyword">if</span> s == n:</span><br><span class="line">                    res.append(cur[:])</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, <span class="number">10</span>):    <span class="comment"># 遍历所有子节点</span></span><br><span class="line">                cur.append(j)</span><br><span class="line">                backtracking(j, cur, s+j) <span class="comment"># 这里的s+j算隐藏回溯</span></span><br><span class="line">                cur.pop()   <span class="comment"># 回溯</span></span><br><span class="line"></span><br><span class="line">        backtracking(<span class="number">0</span>, [], <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="77-组合"><a href="#77-组合" class="headerlink" title="77.组合"></a>77.组合</h2><p>题目链接:<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combinations/">77.组合</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>每次把一个数 i 存到 cur 中，然后遍历比 i 大的数，递归。当 cur 的长度达到 k 时，存到 res 中。需要注意的就是回溯，也就是每次递归完后，需要把 cur 中的最后一个数 pop 出来，然后继续遍历。</p>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.res = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self, i, cur, n, k</span>):</span><br><span class="line">        <span class="comment"># 如果长度到k了，存到res中</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(cur) == k:</span><br><span class="line">            self.res.append(cur[:])</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 向下遍历，同时剪枝</span></span><br><span class="line">        <span class="comment"># k-len(cur)是还需要几个元素,n-(k-len(cur))+1就是最大取到的值了</span></span><br><span class="line">        <span class="comment"># 假如j取n-(k-len(cur))+2的话，那么比j大的数就只有n-j也就是k-len(cur)-2个了</span></span><br><span class="line">        <span class="comment"># 但是除去j这个数以外，还需要k-len(cur)-1个数，所以就不够用了，可以直接剪枝掉</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, n-(k-<span class="built_in">len</span>(cur))+<span class="number">2</span>):</span><br><span class="line">            cur.append(j)   <span class="comment"># 把j添加进当前数组</span></span><br><span class="line">            self.backtracking(j, cur, n, k) <span class="comment"># 往下递归</span></span><br><span class="line">            cur.pop()   <span class="comment"># 回溯</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">combine</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        self.backtracking(<span class="number">0</span>, [], n, k)</span><br><span class="line">        <span class="keyword">return</span> self.res</span><br></pre></td></tr></table></figure>
+<h2 id="17-电话号码的字母组合"><a href="#17-电话号码的字母组合" class="headerlink" title="17.电话号码的字母组合"></a>17.电话号码的字母组合</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">传送门</a></p>
+<h3 id="回溯-1"><a href="#回溯-1" class="headerlink" title="回溯"></a>回溯</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">self, digits: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        <span class="keyword">if</span> digits == <span class="string">&quot;&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        dic = &#123;<span class="string">&quot;2&quot;</span>:<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;3&quot;</span>:<span class="string">&quot;def&quot;</span>, <span class="string">&quot;4&quot;</span>:<span class="string">&quot;ghi&quot;</span>, <span class="string">&quot;5&quot;</span>:<span class="string">&quot;jkl&quot;</span>, <span class="string">&quot;6&quot;</span>:<span class="string">&quot;mno&quot;</span>, <span class="string">&quot;7&quot;</span>:<span class="string">&quot;pqrs&quot;</span>, <span class="string">&quot;8&quot;</span>:<span class="string">&quot;tuv&quot;</span>, <span class="string">&quot;9&quot;</span>:<span class="string">&quot;wxyz&quot;</span>&#125;</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">cur, i</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(cur) == <span class="built_in">len</span>(digits):</span><br><span class="line">                res.append(cur[:])</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">for</span> ch <span class="keyword">in</span> dic[digits[i]]:</span><br><span class="line">                cur += ch</span><br><span class="line">                backtracking(cur, i+<span class="number">1</span>)</span><br><span class="line">                cur = cur[:-<span class="number">1</span>]</span><br><span class="line">        backtracking(<span class="string">&quot;&quot;</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -227,13 +213,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/badline/2023/10/15/day22/" rel="prev" title="day22 669. 修剪二叉搜索树  108.将有序数组转换为二叉搜索树  538.把二叉搜索树转换为累加树">
-      <i class="fa fa-chevron-left"></i> day22 669. 修剪二叉搜索树  108.将有序数组转换为二叉搜索树  538.把二叉搜索树转换为累加树
+    <a href="/badline/2023/10/16/day24/" rel="prev" title="day22 回溯算法 77.组合">
+      <i class="fa fa-chevron-left"></i> day22 回溯算法 77.组合
     </a></div>
-      <div class="post-nav-item">
-    <a href="/badline/2023/10/18/day25/" rel="next" title="day25 216.组合总和III 17.电话号码的字母组合">
-      day25 216.组合总和III 17.电话号码的字母组合 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -293,7 +276,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">理论基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#77-%E7%BB%84%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">77.组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">2.2.</span> <span class="nav-text">Python</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#216-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-III"><span class="nav-number">1.</span> <span class="nav-text">216.组合总和 III</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">1.1.</span> <span class="nav-text">回溯</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">17.电话号码的字母组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">回溯</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -406,7 +389,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'badiline',
       owner       : 'Badline',
       admin       : ['Badline'],
-      id          : '4572103c6eac3b793de259c03b88fbae',
+      id          : '46f470177b8ed729297c0cbd6bb04bce',
         language: 'zh-CN',
       distractionFreeMode: true
     });
